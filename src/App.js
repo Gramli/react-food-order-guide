@@ -1,8 +1,13 @@
 import Header from './components/layout/header';
+import Meals from './components/meals/meals';
+
 const App = () => {
   return (
     <>
-      <Header/>
+      <Header />
+      <main>
+        <Meals />
+      </main>
     </>
   );
 }
