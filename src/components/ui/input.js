@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import React from 'react';
 import styles from './input.module.css';
 
-const Input = (props) => {
+const Input = React.forwardRef((props, ref) => {
     return (
         <div className={styles.input}>
             <label htmlFor={props.input.id}>{props.title}</label>
-            <input {...props.input} onChange={(event) => props.onChange(event.target.value)}></input>
+            <input ref={ref} {...props.input}></input>
         </div>);
-};
+});
 
 export default Input;

@@ -7,17 +7,13 @@ const HeaderCartButton = (props) =>{
 
     const cartContext = useContext(CartContext);
 
-    const amount = cartContext.meals.reduce((curNumber, item)=> {
-        return curNumber + item.amount;
-    },0);
-
     return (
         <button onClick={props.onClick} className={styles.button}>
             <span className={styles.icon}>
                 <CartIcon/>
             </span>
             <span>Your Cart</span>
-            <span className={styles.badge}>{amount}</span>
+            <span className={styles.badge}>{cartContext.totalAmount.toFixed(2)}</span>
         </button>
     );
 };
