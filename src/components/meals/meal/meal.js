@@ -1,10 +1,23 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styles from './meal.module.css';
 import MealForm from "./mealForm";
+import CartContext from '../../../context/cartContext';
 
 const Meal = (props) => {
 
+    const cartContext = useContext(CartContext);
+
     const price = `${props.price} CZK`;
+
+    const onSubmitHandler = (amount)=>{
+        cartContext.addMeal({
+            id: props.id,
+            name: props.name,
+            price: props.price,
+            description: props.description,
+            amount: amount,
+        });
+    };
 
     return (
         <li className={styles.meal}>
@@ -14,7 +27,7 @@ const Meal = (props) => {
                 <div className={styles.price}>{price}</div>
             </div>
             <div>
-                <MealForm id={props.id}/>
+                <MealForm onSubmit={onSubmitHandler} id={props.id}/>
             </div>
         </li>
     );

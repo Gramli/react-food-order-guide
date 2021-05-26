@@ -3,9 +3,17 @@ import Input from '../../ui/input';
 import styles from './mealForm.module.css';
 
 const MealForm = (props) => {
+
+    const [amount, setAmount] = useState(0);
+
+    const onSubmitHandler = (event) => {
+        event.preventDefault();
+        props.onSubmit(amount);
+    };
+
     return (
-        <form className={styles.form}>
-            <Input title="Amount" input={{
+        <form className={styles.form} onSubmit={onSubmitHandler}>
+            <Input title="Amount" onChange={(value)=> setAmount(+value)} input={{
                 id:"amount_" + props.id,
                 type:"number",
                 step:"1",
