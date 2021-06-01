@@ -1,4 +1,5 @@
-Learning React project
+# Learning React project
+Project uses:
 
 **Hooks**
 - useState
